@@ -4,7 +4,7 @@
   <property name="LOG_FILE_ERR" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/error.${tomcat.port:-0000}.log"/>
   
   <property name="FLUME_FILE" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/flume.${tomcat.port:-0000}.log"/>
-  <property name="appName" value="weasel"/>
+  <property name="appName" value="squirrel"/>
 
   <include resource="org/springframework/boot/logging/logback/defaults.xml" />
   <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
@@ -23,7 +23,7 @@
   </appender>
   
   <appender name="FLUME" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <encoder class="com.dxe.weasel.api.encoder.JsonEncoder">
+    <encoder class="com.dxe.squirrel.api.encoder.JsonEncoder">
     	<appName>${appName}</appName>
     </encoder>
     <file>${FLUME_FILE}</file>

@@ -25,7 +25,7 @@ configure(subprojects) { project ->
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
 
-    group = 'com.dxe.weasel'
+    group = 'com.dxe.squirrel'
     version = '1.0.0'
 
     configurations {
@@ -53,15 +53,11 @@ configure(subprojects.findAll { !it.name.endsWith('-sdk') }) {
 
         compile 'org.springframework.boot:spring-boot-starter-aop'
         compile 'org.springframework.boot:spring-boot-starter-cache'
-        compile 'org.springframework.boot:spring-boot-starter-data-jpa'
         compile 'org.springframework.boot:spring-boot-configuration-processor'
         compile 'org.springframework.boot:spring-boot-starter-web'
 
-        compile "com.mysema.querydsl:querydsl-jpa:${querydsl_version}"
         compile "com.mysema.querydsl:querydsl-sql:${querydsl_version}"
         compile "com.mysema.querydsl:querydsl-codegen:${querydsl_version}"
-
-
 
         compile "com.google.guava:guava:${guava_version}"
         compile "org.apache.commons:commons-lang3:${commons_lang3_version}"
@@ -77,12 +73,8 @@ configure(subprojects.findAll { !it.name.endsWith('-sdk') }) {
 
         compile "redis.clients:jedis:${jedis_version}"
 
-        compile "com.alibaba:druid:${druid_version}"
+        compile "com.alibaba:fastjson:${fastjson_version}"
         
-         compile "com.alibaba:fastjson:${fastjson_version}"
-        
-        
-
         compile "mysql:mysql-connector-java:${mysql_version}"
          
         compile "org.springframework:spring-core:${org_springframework_version}"

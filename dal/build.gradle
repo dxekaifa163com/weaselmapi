@@ -1,4 +1,4 @@
 
 dependencies {
-    compile project(':weasel-common')
+    compile project(':squirrel-common')
 }
