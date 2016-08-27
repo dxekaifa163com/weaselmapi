@@ -1,0 +1,6 @@
+dependencies {
+    compile project(':weasel-common')
+    compile project(':weasel-dal')
+  	testCompile("junit:junit")
+}
+

@@ -1,0 +1,86 @@
+server:
+  port: 8080
+
+project:
+  artifactId: weasel
+  name: weasel
+  description: weasel
+
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+
+spring:
+  cache:
+    guava:
+      spec: maximumSize=2000,expireAfterAccess=300s
+  theme:
+    cookie:
+      defaultThemeName: base
+  thymeleaf:
+    cache: true
+  resources:
+    cachePeriod: 2592000
+  messages:
+    basename: i18n/locales
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://${db.host}:${db.port}/${db.database}?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    username: ${db.username}
+    password: ${db.password}
+    initialSize: ${db.initialSize:5}
+    maxActive: ${db.maxActive:20}
+    minIdle: ${db.minIdle:1}
+    maxWait: ${db.maxWait:60000}
+    timeBetweenEvictionRunsMillis: ${db.timeBetweenEvictionRunsMillis:60000}
+    minEvictableIdleTimeMillis: ${db.minEvictableIdleTimeMillis:300000}
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: ${db.maxPoolPreparedStatementPerConnectionSize:20}
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    validationQuery: SELECT 1
+  jpa:
+    database_platform: org.hibernate.dialect.MySQLInnoDBDialect
+    database: MYSQL
+    show-sql: ${db.show-sql:false}
+    hibernate:
+      ddl_auto: none
+      naming_strategy: org.hibernate.cfg.EJB3NamingStrategy
+    properties:
+      hibernate.format_sql: ${db.format-sql:false}
+
+multipart:
+  enabled: true
+  maxFileSize: 20Mb
+  maxRequestSize: 20Mb
+
+logging:
+  level:
+    ROOT: WARN
+    com.dxe.weasel: INFO
+
+flyway:
+  enabled: false
+
+---
+spring:
+  profiles: local
+
+logging:
+  level:
+    org.springframework.boot: INFO
+    org.springframework.web: INFO
+    org.springframework.remoting.support: DEBUG
+    com.dxe.weasel: DEBUG
+
+---
+spring:
+  profiles: local
+encrypt:
+  file: classpath:config/config.properties
+logging:
+  path: logs

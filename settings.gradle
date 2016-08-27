@@ -1,0 +1,8 @@
+rootProject.name='weasel'
+
+include 'dal', 'service', 'api', 'common'
+
+rootProject.children.each { childProject ->
+  childProject.name = 'weasel-' + childProject.name
+}
+
